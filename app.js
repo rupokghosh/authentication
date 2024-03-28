@@ -1,4 +1,5 @@
 /////// app.js
+require("dotenv").config();
 const bcrypt = require("bcryptjs");
 const express = require("express");
 const path = require("path");
@@ -8,8 +9,7 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const mongoDb =
-  "mongodb+srv://rupokghosh291:Pineapple%23123@cluster0.vhv9vf9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoDb = process.env.MONGODB_URI;
 mongoose.connect(mongoDb);
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
